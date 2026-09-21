@@ -1,0 +1,640 @@
+<title>Genetics and Animal Breeding (ANG107) Course Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF9F4;
+    --surface:#FFFFFF;
+    --surface-2:#F1F1EA;
+    --text:#20241F;
+    --text-muted:#5C6459;
+    --border:#E2E1D6;
+    --shadow: 0 1px 2px rgba(30,32,20,0.06), 0 8px 24px -10px rgba(30,32,20,0.14);
+    --radius: 16px;
+    --l1:#146B70;
+    --l2:#3E4E9E;
+    --l3:#9C6A0E;
+    --l4:#9A3358;
+    --l5:#2E6B45;
+    --font-display:'Fraunces',Georgia,serif;
+    --font-body:'Public Sans',-apple-system,'Segoe UI',sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#12151A; --surface:#181D23; --surface-2:#1F252C;
+      --text:#E8ECE7; --text-muted:#99A199; --border:#2B323A;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 12px 32px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12151A; --surface:#181D23; --surface-2:#1F252C;
+    --text:#E8ECE7; --text-muted:#99A199; --border:#2B323A;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 12px 32px -12px rgba(0,0,0,.6);
+  }
+  *{box-sizing:border-box;}
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none!important; scroll-behavior:auto!important; animation:none!important;}
+  }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    margin:0;
+    padding-inline:16px;
+    padding-block:0 32px;
+  }
+  .wrap{max-width:760px; margin:0 auto;}
+
+  header.page-header{
+    position:sticky;
+    top:env(safe-area-inset-top,0px);
+    z-index:5;
+    background:var(--bg);
+    padding-top:calc(env(safe-area-inset-top,0px) + 22px);
+    padding-bottom:14px;
+    border-bottom:1px solid var(--border);
+    margin-bottom:20px;
+  }
+  h1{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(24px,5.5vw,32px);
+    letter-spacing:-0.01em;
+    margin:0 0 4px;
+    text-wrap:balance;
+  }
+  .subtitle{
+    font-size:14px;
+    color:var(--text-muted);
+    margin:0 0 16px;
+  }
+  .subtitle .stat{
+    font-family:var(--font-mono);
+    font-variant-numeric:tabular-nums;
+    color:var(--text);
+    font-weight:500;
+  }
+  .controls{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    align-items:center;
+  }
+  .search-box{
+    position:relative;
+    flex:1 1 220px;
+    min-width:0;
+  }
+  .search-box svg{
+    position:absolute; left:12px; top:50%; transform:translateY(-50%);
+    color:var(--text-muted); pointer-events:none;
+  }
+  .search-box input{
+    width:100%;
+    font:inherit;
+    font-size:14px;
+    padding:9px 12px 9px 34px;
+    border-radius:10px;
+    border:1px solid var(--border);
+    background:var(--surface);
+    color:var(--text);
+  }
+  .search-box input::placeholder{color:var(--text-muted);}
+  .search-box input:focus-visible{outline:2px solid var(--l2); outline-offset:1px;}
+  .btn{
+    font:inherit;
+    font-size:13px;
+    font-weight:600;
+    padding:9px 14px;
+    border-radius:999px;
+    border:1px solid var(--border);
+    background:var(--surface);
+    color:var(--text);
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .btn:hover{background:var(--surface-2);}
+  .btn:focus-visible{outline:2px solid var(--l2); outline-offset:1px;}
+  .match-count{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--text-muted);
+    margin-top:8px;
+  }
+
+  .summary{
+    display:flex; flex-wrap:wrap; gap:10px;
+    margin-bottom:26px;
+  }
+  .summary-card{
+    flex:1 1 130px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:12px 12px 11px;
+    cursor:pointer;
+    text-align:left;
+    font:inherit;
+    color:var(--text);
+  }
+  .summary-card:hover{background:var(--surface-2);}
+  .summary-card:focus-visible{outline:2px solid var(--accent); outline-offset:1px;}
+  .summary-card .sc-top{
+    display:flex; align-items:center; gap:7px; margin-bottom:8px;
+  }
+  .summary-card .sc-dot{
+    width:9px; height:9px; border-radius:50%; background:var(--accent); flex:none;
+  }
+  .summary-card .sc-name{
+    font-size:12.5px; font-weight:600; line-height:1.25;
+  }
+  .summary-card .sc-bar-track{
+    height:5px; border-radius:3px; background:var(--surface-2); overflow:hidden; margin-bottom:6px;
+  }
+  .summary-card .sc-bar-fill{
+    height:100%; background:var(--accent); border-radius:3px;
+  }
+  .summary-card .sc-count{
+    font-family:var(--font-mono); font-size:12px; color:var(--text-muted); font-variant-numeric:tabular-nums;
+  }
+  .summary-card .sc-count b{color:var(--text); font-weight:600;}
+
+  section.lecture{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+  .lec-header{
+    width:100%;
+    display:flex; align-items:center; gap:12px;
+    padding:14px 16px;
+    background:none; border:none; cursor:pointer; text-align:left; font:inherit; color:var(--text);
+  }
+  .lec-header:hover{background:var(--surface-2);}
+  .lec-header:focus-visible{outline:2px solid var(--accent); outline-offset:-2px;}
+  .badge{
+    flex:none;
+    width:30px; height:30px; border-radius:50%;
+    background:var(--accent);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-mono); font-weight:600; font-size:14px;
+  }
+  .lec-title-wrap{flex:1; min-width:0;}
+  .lec-title{
+    font-family:var(--font-display); font-weight:600; font-size:17px; line-height:1.3;
+  }
+  .lec-count{
+    font-family:var(--font-mono); font-size:12px; color:var(--text-muted); margin-top:1px;
+    font-variant-numeric:tabular-nums;
+  }
+  .twisty{
+    flex:none; display:flex; align-items:center; justify-content:center;
+    width:18px; height:18px; color:var(--text-muted);
+  }
+  .lec-header .twisty{color:var(--accent);}
+  .twisty svg{transition:transform .16s ease;}
+  .row.open > .twisty svg, .lec-header.open .twisty svg{transform:rotate(90deg);}
+  .dot{width:5px; height:5px; border-radius:50%; background:var(--text-muted); opacity:.55;}
+
+  ul.tree{
+    list-style:none; margin:0; padding:0;
+  }
+  section.lecture > ul.tree{padding:0 10px 10px;}
+  ul.tree.collapsed{display:none;}
+  .searching ul.tree.collapsed{display:block;}
+
+  li.node{margin:0;}
+  li.node > ul.tree{
+    margin-left:19px;
+    padding-left:14px;
+    border-left:1px solid color-mix(in srgb, var(--accent) 32%, var(--border));
+  }
+  .row{
+    width:100%;
+    display:flex; align-items:center; gap:8px;
+    padding:7px 8px;
+    border-radius:8px;
+    background:none; border:none; cursor:pointer; text-align:left; font:inherit; color:var(--text);
+  }
+  .row:hover{background:var(--surface-2);}
+  .row:focus-visible{outline:2px solid var(--accent); outline-offset:-1px;}
+  .row.leaf{cursor:default;}
+  .row.leaf:hover{background:none;}
+  .label{
+    flex:1; min-width:0; font-size:14px; line-height:1.4;
+  }
+  .row.leaf .label{color:var(--text-muted);}
+  li.node[data-depth="1"] > .row .label{font-weight:600; font-size:14.5px; color:var(--text);}
+  .label mark{
+    background:color-mix(in srgb, var(--accent) 30%, transparent);
+    color:var(--text);
+    border-radius:3px;
+    padding:0 1px;
+  }
+  .count-pill{
+    flex:none;
+    font-family:var(--font-mono); font-size:11px; color:var(--text-muted);
+    background:var(--surface-2);
+    border-radius:999px; padding:1px 7px;
+    font-variant-numeric:tabular-nums;
+  }
+  li.node.search-hide{display:none;}
+
+  footer.note{
+    color:var(--text-muted); font-size:12.5px; text-align:center; margin-top:22px; line-height:1.5;
+  }
+</style>
+
+<div class="wrap">
+  <header class="page-header">
+    <h1>Genetics and Animal Breeding (ANG107) Course Map</h1>
+    <p class="subtitle">Animal Genetics &middot; <span class="stat" id="stat-lectures">5</span> main topics &middot; <span class="stat" id="stat-topics">&nbsp;</span> subtopics</p>
+    <div class="controls">
+      <div class="search-box">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.4"/><line x1="10.2" y1="10.2" x2="13.5" y2="13.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <input id="search" type="text" placeholder="Search topics&hellip;" autocomplete="off" aria-label="Search course topics">
+      </div>
+      <button class="btn" id="expand-all" type="button">Expand all</button>
+      <button class="btn" id="collapse-all" type="button">Collapse all</button>
+    </div>
+    <div class="match-count" id="match-count" hidden></div>
+  </header>
+
+  <div class="summary" id="summary"></div>
+  <div id="lectures"></div>
+
+  <footer class="note">Click any topic with a chevron to expand it, or search to jump straight to a term.</footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var DATA = [
+    { title:"Key Terms", children:[
+      { title:"Phenotype", children:[
+        { title:"Trait & Phenotype" },
+        { title:"Qualitative & Quantitative Trait" },
+        { title:"Simply Inherited & Polygenic Trait" }
+      ]},
+      { title:"Genotype", children:[
+        { title:"DNA & Gene" },
+        { title:"Locus/Loci" },
+        { title:"Allele" },
+        { title:"Diploid & Haploid" },
+        { title:"Homozygous & Heterozygous" }
+      ]},
+      { title:"Environment", children:[
+        { title:"Environmental Effect" },
+        { title:"Genotype by Environment Interactions" }
+      ]},
+      { title:"Basic Genetic Model (P = G + E)" }
+    ]},
+    { title:"Mendelian Inheritance and Gene Action", children:[
+      { title:"Cellular Basis of Life" },
+      { title:"Meiosis" },
+      { title:"Mendel's Law", children:[
+        { title:"Law of Segregation" },
+        { title:"Law of Independent Assortment" },
+        { title:"Law of Dominance" }
+      ]},
+      { title:"Gene Action", children:[
+        { title:"Additive" },
+        { title:"Dominance", children:[
+          { title:"Complete Dominance" },
+          { title:"Partial or Incomplete Dominance" },
+          { title:"Over-Dominance" }
+        ]},
+        { title:"Epistasis" }
+      ]},
+      { title:"Sex-Related Inheritance", children:[
+        { title:"Sex-Linked Inheritance" },
+        { title:"Sex-Limited Inheritance" },
+        { title:"Sex-Influenced Inheritance" }
+      ]},
+      { title:"Punnett Square" },
+      { title:"Mendelian Sampling" }
+    ]},
+    { title:"Genotype and Allele Frequencies", children:[
+      { title:"Allele Frequency" },
+      { title:"Genotype Frequency" },
+      { title:"Predict Genotype Frequencies Using a Punnett Square" },
+      { title:"Hardy-Weinberg Equilibrium" },
+      { title:"Influence on Allele and Genotype Frequencies", children:[
+        { title:"Mating Systems", children:[
+          { title:"Positive Assortative Mating" },
+          { title:"Negative Assortative Mating" },
+          { title:"Complementary Mating" },
+          { title:"Inbreeding" },
+          { title:"Outbreeding" }
+        ]},
+        { title:"Selection" }
+      ]}
+    ]},
+    { title:"Selection for Simply Inherited Traits", children:[
+      { title:"Predict Allele and Genotype Frequencies Change Under Selection", children:[
+        { title:"General Equation for Selection Response" }
+      ]},
+      { title:"Factors Influencing the Effectiveness of Selection", children:[
+        { title:"Selection Coefficient" },
+        { title:"Dominance Pattern" },
+        { title:"Starting Allele Frequency" }
+      ]},
+      { title:"Progeny Testing for Recessive Alleles" },
+      { title:"DNA Testing" }
+    ]},
+    { title:"Selection for Quantitative Traits", children:[
+      { title:"Population Measure", children:[
+        { title:"Distribution of Phenotypic & Genotypic Values" },
+        { title:"Mean, Variance, Standard Deviation" },
+        { title:"Covariance, Correlation, Regression" },
+        { title:"Prediction Equation" },
+        { title:"Normal Distribution" },
+        { title:"Population Parameters and Sample Statistics" }
+      ]},
+      { title:"Genetic Model", children:[
+        { title:"Genotypic Value vs. Breeding Value" },
+        { title:"Breeding Value", children:[
+          { title:"Progeny Difference" },
+          { title:"Independent Gene Effects" }
+        ]},
+        { title:"Gene Combination Value" },
+        { title:"Heritability", children:[
+          { title:"Mathematical Definitions" },
+          { title:"Predict Breeding Values from Phenotypic Values" },
+          { title:"Narrow Sense & Broad Sense Heritability" }
+        ]},
+        { title:"Repeatability", children:[
+          { title:"Repeated Traits" },
+          { title:"Permanent Environment & Temporary Environment Effects" },
+          { title:"Producing Ability" }
+        ]},
+        { title:"Rate of Genetic Change", children:[
+          { title:"Selection Differential" },
+          { title:"Breeder's Equation", children:[
+            { title:"Selection Intensity" },
+            { title:"Generation Interval" },
+            { title:"Genetic Variation" },
+            { title:"Selection Accuracy" }
+          ]},
+          { title:"Trade-offs in Breeder's Equation" }
+        ]},
+        { title:"Genetic Prediction", children:[
+          { title:"Predict Genetic Merit Using Available Information", children:[
+            { title:"Own Phenotype" },
+            { title:"Progeny Data" },
+            { title:"Pedigree Data", children:[
+              { title:"Tabular Methods" },
+              { title:"BLUP" }
+            ]},
+            { title:"Genomic Data" }
+          ]},
+          { title:"Regression Coefficient" },
+          { title:"Correlation" },
+          { title:"Confidence Range" }
+        ]},
+        { title:"Genomic Selection", children:[
+          { title:"Single-Marker Models" },
+          { title:"Whole-Genome Selection" },
+          { title:"Genomic Prediction" },
+          { title:"GWAS" }
+        ]},
+        { title:"Indirect Selection" },
+        { title:"Multiple Trait Selection", children:[
+          { title:"Tandem Selection" },
+          { title:"Independent Culling Levels" },
+          { title:"Economic Selection Index" }
+        ]}
+      ]},
+      { title:"Genetic Improvement Organization", children:[
+        { title:"Monogastrics" },
+        { title:"Ruminants" }
+      ]}
+    ]}
+  ];
+
+  var ACCENTS = ["var(--l1)","var(--l2)","var(--l3)","var(--l4)","var(--l5)"];
+
+  // ---- preprocess: assign ids, parent links, counts ----
+  var byId = {};
+  function preprocess(node, id, parentId){
+    node.id = id;
+    node.parentId = parentId;
+    byId[id] = node;
+    var count = 0;
+    if (node.children){
+      node.children.forEach(function(child, i){
+        preprocess(child, id + "-" + i, id);
+        count += 1 + child._descCount;
+      });
+    }
+    node._descCount = count;
+    return count;
+  }
+  DATA.forEach(function(lec, i){ preprocess(lec, "l" + i, null); });
+
+  var totalSubtopics = DATA.reduce(function(sum, lec){ return sum + lec._descCount; }, 0);
+  document.getElementById("stat-topics").textContent = totalSubtopics;
+
+  var maxLecCount = Math.max.apply(null, DATA.map(function(l){ return 1 + l._descCount; }));
+
+  function chevronSvg(){
+    return '<svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M3 1.2l5 4.3-5 4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+
+  // ---- build summary cards ----
+  var summaryEl = document.getElementById("summary");
+  DATA.forEach(function(lec, i){
+    var count = 1 + lec._descCount;
+    var pct = Math.round((count / maxLecCount) * 100);
+    var card = document.createElement("button");
+    card.type = "button";
+    card.className = "summary-card";
+    card.style.setProperty("--accent", ACCENTS[i]);
+    card.innerHTML =
+      '<div class="sc-top"><span class="sc-dot"></span><span class="sc-name">' + (i+1) + '. ' + lec.title + '</span></div>' +
+      '<div class="sc-bar-track"><div class="sc-bar-fill" style="width:' + pct + '%"></div></div>' +
+      '<div class="sc-count"><b>' + count + '</b> topics</div>';
+    card.addEventListener("click", function(){
+      var section = document.getElementById("sec-" + lec.id);
+      openLecture(lec.id);
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    summaryEl.appendChild(card);
+  });
+
+  // ---- build tree DOM ----
+  function buildRow(node, depth, isLecHeader){
+    var hasChildren = !!(node.children && node.children.length);
+    var row = document.createElement("button");
+    row.type = "button";
+    row.className = isLecHeader ? "lec-header" : "row" + (hasChildren ? "" : " leaf");
+    row.setAttribute("data-id", node.id);
+    if (hasChildren) row.setAttribute("aria-expanded", "false");
+
+    var twisty = document.createElement("span");
+    twisty.className = "twisty";
+    twisty.innerHTML = hasChildren ? chevronSvg() : '<span class="dot"></span>';
+    row.appendChild(twisty);
+
+    if (isLecHeader){
+      var badge = document.createElement("span");
+      badge.className = "badge";
+      badge.textContent = String(depth);
+      row.appendChild(badge);
+
+      var titleWrap = document.createElement("span");
+      titleWrap.className = "lec-title-wrap";
+      titleWrap.innerHTML = '<span class="lec-title label">' + node.title + '</span>' +
+        '<div class="lec-count">' + (1 + node._descCount) + ' topics</div>';
+      row.appendChild(titleWrap);
+    } else {
+      var label = document.createElement("span");
+      label.className = "label";
+      label.setAttribute("data-title", node.title);
+      label.textContent = node.title;
+      row.appendChild(label);
+
+      if (hasChildren){
+        var pill = document.createElement("span");
+        pill.className = "count-pill";
+        pill.textContent = node._descCount;
+        row.appendChild(pill);
+      }
+    }
+
+    if (hasChildren){
+      row.addEventListener("click", function(){
+        var ul = row.parentElement.querySelector(":scope > ul.tree") || row.nextElementSibling;
+        var open = ul.classList.toggle("collapsed") === false;
+        row.classList.toggle("open", open);
+        row.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    }
+    return row;
+  }
+
+  function buildTree(nodes, depth){
+    var ul = document.createElement("ul");
+    ul.className = "tree collapsed";
+    nodes.forEach(function(node){
+      var li = document.createElement("li");
+      li.className = "node";
+      li.setAttribute("data-id", node.id);
+      li.setAttribute("data-depth", depth);
+      li.appendChild(buildRow(node, depth, false));
+      if (node.children && node.children.length){
+        li.appendChild(buildTree(node.children, depth + 1));
+      }
+      ul.appendChild(li);
+    });
+    return ul;
+  }
+
+  var lecturesEl = document.getElementById("lectures");
+  DATA.forEach(function(lec, i){
+    var section = document.createElement("section");
+    section.className = "lecture";
+    section.id = "sec-" + lec.id;
+    section.style.setProperty("--accent", ACCENTS[i]);
+    section.appendChild(buildRow(lec, i + 1, true));
+    section.appendChild(buildTree(lec.children, 1));
+    lecturesEl.appendChild(section);
+  });
+
+  function openLecture(id){
+    var section = document.getElementById("sec-" + id);
+    var header = section.querySelector(".lec-header");
+    var ul = section.querySelector(":scope > ul.tree");
+    ul.classList.remove("collapsed");
+    header.classList.add("open");
+    header.setAttribute("aria-expanded", "true");
+  }
+
+  // open the first lecture one level, so the page shows how it works at rest
+  openLecture(DATA[0].id);
+
+  // ---- expand all / collapse all ----
+  document.getElementById("expand-all").addEventListener("click", function(){
+    document.querySelectorAll("ul.tree").forEach(function(ul){ ul.classList.remove("collapsed"); });
+    document.querySelectorAll(".row, .lec-header").forEach(function(row){
+      row.classList.add("open");
+      if (row.hasAttribute("aria-expanded")) row.setAttribute("aria-expanded", "true");
+    });
+  });
+  document.getElementById("collapse-all").addEventListener("click", function(){
+    document.querySelectorAll("ul.tree").forEach(function(ul){ ul.classList.add("collapsed"); });
+    document.querySelectorAll(".row, .lec-header").forEach(function(row){
+      row.classList.remove("open");
+      if (row.hasAttribute("aria-expanded")) row.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  // ---- search ----
+  var container = document.getElementById("lectures");
+  var matchCountEl = document.getElementById("match-count");
+
+  function escapeRegExp(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+
+  function resetLabels(){
+    document.querySelectorAll(".label[data-title]").forEach(function(el){
+      el.textContent = el.getAttribute("data-title");
+    });
+    document.querySelectorAll("li.node").forEach(function(li){ li.classList.remove("search-hide"); });
+  }
+
+  document.getElementById("search").addEventListener("input", function(e){
+    var q = e.target.value.trim();
+    if (!q){
+      container.classList.remove("searching");
+      matchCountEl.hidden = true;
+      resetLabels();
+      return;
+    }
+    container.classList.add("searching");
+    var re = new RegExp("(" + escapeRegExp(q) + ")", "ig");
+    var showIds = {};
+    var matches = 0;
+
+    function markAncestors(id){
+      var n = byId[id];
+      while (n && n.parentId){
+        showIds[n.parentId] = true;
+        n = byId[n.parentId];
+      }
+    }
+
+    Object.keys(byId).forEach(function(id){
+      var node = byId[id];
+      if (node.title.toLowerCase().indexOf(q.toLowerCase()) !== -1){
+        showIds[id] = true;
+        markAncestors(id);
+        matches++;
+      }
+    });
+
+    document.querySelectorAll("li.node").forEach(function(li){
+      var id = li.getAttribute("data-id");
+      li.classList.toggle("search-hide", !showIds[id]);
+    });
+
+    document.querySelectorAll(".label[data-title]").forEach(function(el){
+      var title = el.getAttribute("data-title");
+      var id = el.closest("li.node").getAttribute("data-id");
+      el.textContent = title;
+      if (showIds[id] && byId[id].title.toLowerCase().indexOf(q.toLowerCase()) !== -1){
+        el.innerHTML = title.replace(re, "<mark>$1</mark>");
+      }
+    });
+
+    matchCountEl.hidden = false;
+    matchCountEl.textContent = matches + (matches === 1 ? " topic" : " topics") + ' match "' + q + '"';
+  });
+})();
+</script>
